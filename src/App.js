@@ -2,11 +2,11 @@ import { useState } from 'react';
 import './App.css';
 
 function App() {
-  const[courseList, setCourseList] = useState([])
-  const [cours, setCourse] = useState("")
+  const[courseList, setCourseList] = useState([]);
+  const [newCours, setCourse] = useState("");
 
   const addCourse=()=>{
-    const newCourseList = [...courseList, cours]
+    const newCourseList = [...courseList, newCours]
     setCourseList(newCourseList)
     console.log(courseList)
   }
@@ -24,7 +24,7 @@ function App() {
       <div className='list'></div>
       {courseList.map((course)=>{
         return (<div>
-          <h1>{cours}</h1> 
+          <h1>{course}</h1> 
           <button>X</button>
 
       </div>)
