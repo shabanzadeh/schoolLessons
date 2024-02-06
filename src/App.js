@@ -1,23 +1,35 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
 
 function App() {
+  const[courseList, setCourseList] = useState([])
+  const [cours, setCourse] = useState("")
+
+  const addCourse=()=>{
+    const newCourseList = [...courseList, cours]
+    setCourseList(newCourseList)
+    console.log(courseList)
+  }
+
+  const handelChange=(event)=>{
+    return setCourse(event.target.value)
+
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className='add-course'>
+        <input type='text'onChange={handelChange}></input>
+        <button onClick={addCourse}>Add course</button>
+      </div>
+      <div className='list'></div>
+      {courseList.map((course)=>{
+        return (<div>
+          <h1>{cours}</h1> 
+          <button>X</button>
+
+      </div>)
+    })}
+      
     </div>
   );
 }
